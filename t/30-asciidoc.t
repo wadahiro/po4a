@@ -14,7 +14,8 @@ unless (-e "t/tmp") {
 }
 
 my @AsciiDocTests = qw(Titles BlockTitles BlockId Paragraphs
-DelimitedBlocks Lists Footnotes Callouts Comments Tables Attributes StyleMacro);
+DelimitedBlocks Lists Footnotes Callouts Comments Tables Attributes StyleMacro
+Asciidoctor);
 
 foreach my $AsciiDocTest (@AsciiDocTests) {
     # Tables are currently badly supported.
@@ -54,7 +55,7 @@ push @tests, {
     'doc' => "translate titles with latin1 encoding",
     'requires' => "Unicode::GCString"
 };
-use Test::More tests => 2 * 15;
+use Test::More tests => 2 * 16;
 
 chdir "t/tmp" || die "Can't chdir to my test directory";
 

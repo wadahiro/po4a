@@ -1,0 +1,298 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2017-10-20 10:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: Title =
+#: ../data-30/Asciidoctor.asciidoc:2
+#, no-wrap
+msgid "Test Asciidoctor"
+msgstr ""
+
+#. type: Title #
+#: ../data-30/Asciidoctor.asciidoc:4
+#, no-wrap
+msgid "Document Title (Level 0)"
+msgstr ""
+
+#. type: Title ##
+#: ../data-30/Asciidoctor.asciidoc:6
+#, no-wrap
+msgid "Section Level 1"
+msgstr ""
+
+#. type: Title ###
+#: ../data-30/Asciidoctor.asciidoc:8
+#, no-wrap
+msgid "Section Level 2"
+msgstr ""
+
+#. type: Title ####
+#: ../data-30/Asciidoctor.asciidoc:10
+#, no-wrap
+msgid "Section Level 3"
+msgstr ""
+
+#. type: Title #####
+#: ../data-30/Asciidoctor.asciidoc:12
+#, no-wrap
+msgid "Section Level 4"
+msgstr ""
+
+#. type: Title ######
+#: ../data-30/Asciidoctor.asciidoc:14
+#, no-wrap
+msgid "Section Level 5"
+msgstr ""
+
+#. type: Title ======
+#: ../data-30/Asciidoctor.asciidoc:16
+#, no-wrap
+msgid "Section title (level 5)"
+msgstr ""
+
+#. type: Code block ```
+#: ../data-30/Asciidoctor.asciidoc:20
+msgid "Markdown-style code block"
+msgstr ""
+
+#. type: Code block ```
+#: ../data-30/Asciidoctor.asciidoc:28
+#, no-wrap
+msgid ""
+"require 'sinatra'\n"
+"\n"
+"get '/hi' do\n"
+"  \"Hello World!\"\n"
+"end\n"
+msgstr ""
+
+#. type: Block title
+#: ../data-30/Asciidoctor.asciidoc:30
+#, no-wrap
+msgid "Table Title"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:33
+msgid "Name of Column 1 |Name of Column 2 |Name of Column 3"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:35 ../data-30/Asciidoctor.asciidoc:49
+msgid "Cell in column 1, row 1"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:36 ../data-30/Asciidoctor.asciidoc:50
+msgid "Cell in column 2, row 1"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:37
+msgid "Cell in column 3, row 1"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:39 ../data-30/Asciidoctor.asciidoc:52
+msgid "Cell in column 1, row 2"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:40 ../data-30/Asciidoctor.asciidoc:53
+msgid "Cell in column 2, row 2"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:41
+msgid "Cell in column 3, row 2"
+msgstr ""
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#: ../data-30/Asciidoctor.asciidoc:43
+#, no-wrap
+msgid "2*"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:46
+msgid "Name of Column 1"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:47
+msgid "Name of Column 2"
+msgstr ""
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#: ../data-30/Asciidoctor.asciidoc:55
+#, no-wrap
+msgid "1,1,2"
+msgstr ""
+
+#. type: Block title
+#: ../data-30/Asciidoctor.asciidoc:56
+#, no-wrap
+msgid "Applications"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:59
+msgid "Name"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:60
+msgid "Category"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:61
+msgid "Description"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:62 ../data-30/Asciidoctor.asciidoc:76
+msgid "Firefox"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:63 ../data-30/Asciidoctor.asciidoc:77
+msgid "Browser"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:66
+#, no-wrap
+msgid ""
+"Mozilla Firefox is an open-source web browser.\n"
+"It's designed for standards compliance,\n"
+"performance, portability.\n"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:68
+msgid "Arquillian"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:69
+msgid "Testing"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:71
+#, no-wrap
+msgid ""
+"An innovative and highly extensible testing platform.\n"
+"Empowers developers to easily create real, automated tests.\n"
+msgstr ""
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#: ../data-30/Asciidoctor.asciidoc:73
+#, no-wrap
+msgid "2,2,5a"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:78
+msgid "Mozilla Firefox is an open-source web browser."
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:80
+msgid "It's designed for:"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../data-30/Asciidoctor.asciidoc:84
+msgid "standards compliance"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../data-30/Asciidoctor.asciidoc:84
+msgid "performance"
+msgstr ""
+
+#. type: Bullet: '* '
+#: ../data-30/Asciidoctor.asciidoc:84
+msgid "portability"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:86
+msgid "http://getfirefox.com[Get Firefox]!"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:93
+#, no-wrap
+msgid ""
+"Artist,Track,Genre\n"
+"Baauer,Harlem Shake,Hip Hop\n"
+"The Lumineers,Ho Hey,Folk Rock\n"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:97
+msgid "Artist,Track,Genre"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:99
+msgid "Baauer,Harlem Shake,Hip Hop"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:104
+msgid "include::customers.csv[]"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:109
+msgid "Artist:Track:Genre"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:111
+msgid "Robyn:Indestructable:Dance"
+msgstr ""
+
+#. type: Named 'cols' AttributeList argument for style 'cols'
+#: ../data-30/Asciidoctor.asciidoc:113
+#, no-wrap
+msgid "e,m,^,>s"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:116
+msgid "1 >s|2 |3 |4"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:117
+msgid "5 2.2+^.^|6 .3+<.>m|7"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:118
+msgid "8"
+msgstr ""
+
+#. type: Plain text
+#: ../data-30/Asciidoctor.asciidoc:119
+msgid "9 2+>|10"
+msgstr ""

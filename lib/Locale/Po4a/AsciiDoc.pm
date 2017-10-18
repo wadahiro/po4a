@@ -151,6 +151,7 @@ sub initialize {
     $self->register_attributelist('[verse,2,3,attribution,citetitle]');
     $self->register_attributelist('[quote,2,3,attribution,citetitle]');
     $self->register_attributelist('[icon]');
+    $self->register_attributelist('[cols]');
     $self->register_attributelist('[caption]');
     $self->register_attributelist('[-icons,caption]');
     $self->register_macro('image_[1,alt,title,link]');
@@ -312,6 +313,10 @@ sub parse {
             } else {
                 push @comments, $line;
             }
+        } elsif ($line =~ m/^((- *){3}|(\* *){3})$/) {
+            # Markdown-style horizontal rules
+            $wrapped_mode = 1;
+            $self->pushline($line."\n");
         } elsif ((not defined($self->{verbatim})) and ($line =~ m/^(\+|--)$/)) {
             # List Item Continuation or List Block
             do_paragraph($self,$paragraph,$wrapped_mode);
@@ -341,7 +346,7 @@ sub parse {
             @comments=();
             $wrapped_mode = 1;
             $self->pushline(($level x (chars($t, $self->{TT}{po_in}{encoder}, $ref)))."\n");
-        } elsif ($line =~ m/^(={1,5})( +)(.*?)( +\1)?$/) {
+        } elsif ($line =~ m/^(={1,6}|#{1,6})( +)(.*?)( +\1)?$/) {
             my $titlelevel1 = $1;
             my $titlespaces = $2;
             my $title = $3;
@@ -358,7 +363,121 @@ sub parse {
             $self->pushline($titlelevel1.$titlespaces.$t.$titlelevel2."\n");
             @comments=();
             $wrapped_mode = 1;
-        } elsif ($line =~ m/^(\/{4,}|\+{4,}|-{4,}|\.{4,}|\*{4,}|_{4,}|={4,}|~{4,}|\|={4,})$/) {
+        } elsif ($line =~ m/^(`{3})(.*)$/ or
+                 (defined $self->{verbatim} and $self->{verbatim} == 5)) {
+            # Found asciidotor markdown-style code block
+            my $t = $1;
+            my $lang = $2 || "";
+            my $type = "Code block $t";
+
+            if (defined $self->{verbatim} and $self->{verbatim} == 5
+                and ($self->{type} ne $type)) {
+                # Processing the content
+                if (length($paragraph) > 0) {
+                    $wrapped_mode = 0;
+                }
+                $paragraph .= $line."\n";
+            } else {
+                # Processing start or end
+                if ((defined $self->{type})
+                    and ($self->{type} eq $type)) {
+                    print STDERR "Closing $t code block\n" if  $debug{parse};
+
+                    undef $self->{type};
+                    undef $self->{verbatim};
+
+                    my $text = $self->translate($paragraph,
+                                                $self->{ref},
+                                                $type,
+                                                "comment" => join("\n", @comments),
+                                                "wrap" => $wrapped_mode);
+                    $self->pushline($text);
+                    if ($wrapped_mode == 1) {
+                        $self->pushline("\n");
+                    }
+                    $self->pushline($t."\n");
+                    $paragraph = "";
+                    $wrapped_mode = 1;
+                } else {
+                    print STDERR "Begining $t code block\n" if $debug{parse};
+
+                    $self->{verbatim} = 5;
+                    $self->{type} = $type;
+
+                    $wrapped_mode = 1;
+                    $self->pushline($t.$lang."\n");
+                }
+            }
+        } elsif ($line =~ m/^(\|={3,}|,={3,}|:={3,})$/ or
+                 (defined $self->{verbatim} and $self->{verbatim} == 4)) {
+            # Found asciidotor table
+            my $t = $1 || "";
+            my $type = "Table $t";
+
+            if (defined $self->{verbatim} and $self->{verbatim} == 4
+                and ($self->{type} ne $type)) {
+                # Processing table content
+                if ($line =~ m/^(\^{0,1}\|)(.*)$/) {
+                    # New column with starting "|" or "^|")
+                    my $t = $self->{type};
+                    undef $self->{type};
+                    undef $self->{verbatim};
+
+                    # Break paragraphs
+                    do_paragraph($self,$paragraph,$wrapped_mode);
+                    $paragraph = "";
+                    $wrapped_mode = 1;
+
+                    $self->{type} = $t;
+                    $self->{verbatim} = 4;
+
+                    my $tag = $1;
+                    my $text = $2 || "";
+                    $paragraph = $text."\n";
+                    $self->pushline($tag);
+                } elsif ($line =~ /^\s*$/) {
+                    # New column with empty line or line containing only spaces
+                    my $t = $self->{type};
+                    undef $self->{type};
+                    undef $self->{verbatim};
+
+                    # Break paragraphs
+                    do_paragraph($self,$paragraph,$wrapped_mode);
+                    $paragraph = "";
+                    $wrapped_mode = 1;
+
+                    $self->{type} = $t;
+                    $self->{verbatim} = 4;
+
+                    $self->pushline("\n");
+                } else {
+                    if (length($paragraph) > 0) {
+                        $wrapped_mode = 0;
+                    }
+                    $paragraph .= $line."\n";
+                }
+            } else {
+                # Processing table start or end
+                if ((defined $self->{type})
+                    and ($self->{type} eq $type)) {
+                    print STDERR "Closing $t block\n" if  $debug{parse};
+
+                    undef $self->{type};
+                    undef $self->{verbatim};
+
+                    do_paragraph($self,$paragraph,$wrapped_mode);
+                    $paragraph = "";
+
+                    $wrapped_mode = 1;
+                } else {
+                    print STDERR "Begining $t block\n" if $debug{parse};
+
+                    $self->{verbatim} = 4;
+                    $self->{type} = $type;
+                }
+                $self->pushline($t."\n");
+            }
+        } elsif ($line =~ m/^(\/{4,}|\+{4,}|-{4,}|\.{4,}|\*{4,}|_{4,}|={4,}|~{4,})$/) {
             # Found one delimited block
             my $t = $line;
             $t =~ s/^(.).*$/$1/;
