@@ -346,7 +346,7 @@ sub parse {
             @comments=();
             $wrapped_mode = 1;
             $self->pushline(($level x (chars($t, $self->{TT}{po_in}{encoder}, $ref)))."\n");
-        } elsif ($line =~ m/^(={1,6}|#{1,6})( +)(.*?)( +\1)?$/) {
+        } elsif (not defined $self->{verbatim} and $line =~ m/^(={1,6}|#{1,6})( +)(.*?)( +\1)?$/) {
             my $titlelevel1 = $1;
             my $titlespaces = $2;
             my $title = $3;
